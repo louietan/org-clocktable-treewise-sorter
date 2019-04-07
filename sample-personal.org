@@ -1,0 +1,59 @@
+#+STARTUP: showall
+
+* Category 1
+
+** Task 1
+   :LOGBOOK:
+   CLOCK: [2019-03-02 Sat 08:00]--[2019-03-02 Sat 08:11] =>  0:11
+   :END:
+
+** Task 2
+   :LOGBOOK:
+   CLOCK: [2019-03-02 Sat 08:23]--[2019-03-02 Sat 09:15] =>  0:52
+   :END:
+
+* Category 2
+
+** Task 1
+   :LOGBOOK:
+   CLOCK: [2019-03-02 Sat 09:18]--[2019-03-02 Sat 10:17] =>  0:59
+   :END:
+
+* Category 3
+
+** Task 1
+   :LOGBOOK:
+   CLOCK: [2019-03-02 Sat 10:23]--[2019-03-02 Sat 10:29] =>  0:06
+   :END:
+
+** Task 2
+
+*** Subtask 1
+    :LOGBOOK:
+    CLOCK: [2019-03-02 Sat 10:31]--[2019-03-02 Sat 11:48] =>  1:17
+    :END:
+
+**** Subtask 1.1
+     :LOGBOOK:
+     CLOCK: [2019-03-02 Sat 12:01]--[2019-03-02 Sat 12:43] =>  0:42
+     :END:
+
+**** Subtask 1.2
+     :LOGBOOK:
+     CLOCK: [2019-03-02 Sat 12:44]--[2019-03-02 Sat 13:02] =>  0:18
+     :END:
+
+*** Subtask 2
+    :LOGBOOK:
+    CLOCK: [2019-03-02 Sat 13:18]--[2019-03-02 Sat 15:44] =>  2:26
+    :END:
+
+*** Subtask 3
+    :LOGBOOK:
+    CLOCK: [2019-03-02 Sat 15:50]--[2019-03-02 Sat 16:15] =>  0:25
+    :END:
+
+*** Subtask 4
+    :LOGBOOK:
+    CLOCK: [2019-03-02 Sat 16:27]--[2019-03-02 Sat 17:29] =>  1:02
+    :END:

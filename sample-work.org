@@ -1,0 +1,111 @@
+#+STARTUP: showall
+
+* Project 1
+
+** Task 1
+
+*** Subtask 1.1
+    :LOGBOOK:
+    CLOCK: [2019-02-28 Thu 10:00]--[2019-02-28 Thu 12:47] =>  2:47
+    :END:
+
+*** Subtask 1.2
+    :LOGBOOK:
+    CLOCK: [2019-02-28 Thu 12:53]--[2019-02-28 Thu 14:59] =>  2:06
+    :END:
+
+*** Subtask 1.3
+    :LOGBOOK:
+    CLOCK: [2019-02-28 Thu 15:03]--[2019-02-28 Thu 18:01] =>  2:58
+    :END:
+
+* Project 2
+
+** Task 1
+
+*** Subtask 1.1
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 09:12]--[2019-03-01 Fri 09:24] =>  0:12
+    :END:
+
+*** Subtask 1.2
+
+**** Subtask 1.2.1
+     :LOGBOOK:
+     CLOCK: [2019-03-01 Fri 09:33]--[2019-03-01 Fri 09:57] =>  0:24
+     :END:
+
+**** Subtask 1.2.2
+     :LOGBOOK:
+     CLOCK: [2019-03-01 Fri 10:04]--[2019-03-01 Fri 10:16] =>  0:12
+     :END:
+
+** Task 2
+
+*** Subtask 2.1
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 10:27]--[2019-03-01 Fri 10:57] =>  0:30
+    :END:
+
+*** Subtask 2.2
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 10:59]--[2019-03-01 Fri 11:25] =>  0:26
+    :END:
+
+* Project 3
+
+** Task 1
+
+*** Subtask 1.1
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 11:32]--[2019-03-01 Fri 11:40] =>  0:08
+    :END:
+
+*** Subtask 1.2
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 11:42]--[2019-03-01 Fri 12:02] =>  0:20
+    :END:
+
+*** Subtask 1.3
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 13:11]--[2019-03-01 Fri 13:56] =>  0:45
+    :END:
+
+** Task 2
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 14:07]--[2019-03-01 Fri 14:09] =>  0:02
+    :END:
+
+** Task 3
+
+*** Subtask 3.1
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 14:12]--[2019-03-01 Fri 14:15] =>  0:03
+    :END:
+
+*** Subtask 3.2
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 14:16]--[2019-03-01 Fri 14:21] =>  0:05
+    :END:
+
+** Task 4
+
+*** Subtask 4.1
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 14:24]--[2019-03-01 Fri 14:36] =>  0:12
+    :END:
+
+*** Subtask 4.2
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 14:37]--[2019-03-01 Fri 15:58] =>  1:21
+    :END:
+
+*** Subtask 4.3
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 17:00]--[2019-03-01 Fri 17:14] =>  0:14
+    :END:
+
+*** Subtask 4.4
+    :LOGBOOK:
+    CLOCK: [2019-03-01 Fri 17:16]--[2019-03-01 Fri 17:59] =>  0:43
+    :END:

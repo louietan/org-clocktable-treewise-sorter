@@ -1,0 +1,137 @@
+# -*- org-agenda-files: ("./sample-work.org" "./sample-personal.org"); -*-
+#+STARTUP: showall
+
+* Clocktable tree-wise sorter
+
+  When sorting a clocktable with the builtin formatter
+  ~org-clocktable-write-default~, entries are simply sorted row by row
+  ignoring levels and would be out of order should the levels of
+  hierarchy be more than one.  This file provides utilities to sort
+  clocktables with respect to entry levels.  The way it works is to
+  sort the table data before being written into a Org table, thus has
+  its limitations that it has no idea of "columns" and can only sort
+  on name and time.
+
+** Usage
+
+   1. Set the formatter in the property line with ~:formatter
+      lt/org-clocktable-write-sorted-trees~
+   2. Set the the sorting method with parameter ~:sort-trees~ and possible
+      values "name" (ascending), "NAME" (descending), "time"
+      (ascending), "TIME" (descending)
+
+** Examples
+
+*** Sort on name
+
+    #+BEGIN_SRC org
+      ,#+BEGIN: clocktable :scope agenda :compact nil :formula % :maxlevel 4 :sort-trees name :formatter lt/org-clocktable-write-sorted-trees
+      ,#+CAPTION: Clock summary at [2019-04-07 Sun 21:45]
+      | File                | Headline              |    Time |      |      |      |     % |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      |                     | ALL *Total time*      | *21:46* |      |      |      | 100.0 |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      | sample-personal.org | *File time*           |  *8:18* |      |      |      |       |
+      |                     | Category 1            |    1:03 |      |      |      |   4.8 |
+      |                     | \_  Task 1            |         | 0:11 |      |      |   0.8 |
+      |                     | \_  Task 2            |         | 0:52 |      |      |   4.0 |
+      |                     | Category 2            |    0:59 |      |      |      |   4.5 |
+      |                     | \_  Task 1            |         | 0:59 |      |      |   4.5 |
+      |                     | Category 3            |    6:16 |      |      |      |  28.8 |
+      |                     | \_  Task 1            |         | 0:06 |      |      |   0.5 |
+      |                     | \_  Task 2            |         | 6:10 |      |      |  28.3 |
+      |                     | \_    Subtask 1       |         |      | 2:17 |      |  10.5 |
+      |                     | \_      Subtask 1.1   |         |      |      | 0:42 |   3.2 |
+      |                     | \_      Subtask 1.2   |         |      |      | 0:18 |   1.4 |
+      |                     | \_    Subtask 2       |         |      | 2:26 |      |  11.2 |
+      |                     | \_    Subtask 3       |         |      | 0:25 |      |   1.9 |
+      |                     | \_    Subtask 4       |         |      | 1:02 |      |   4.7 |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      | sample-work.org     | *File time*           | *13:28* |      |      |      |       |
+      |                     | Project 1             |    7:51 |      |      |      |  36.1 |
+      |                     | \_  Task 1            |         | 7:51 |      |      |  36.1 |
+      |                     | \_    Subtask 1.1     |         |      | 2:47 |      |  12.8 |
+      |                     | \_    Subtask 1.2     |         |      | 2:06 |      |   9.6 |
+      |                     | \_    Subtask 1.3     |         |      | 2:58 |      |  13.6 |
+      |                     | Project 2             |    1:44 |      |      |      |   8.0 |
+      |                     | \_  Task 1            |         | 0:48 |      |      |   3.7 |
+      |                     | \_    Subtask 1.1     |         |      | 0:12 |      |   0.9 |
+      |                     | \_    Subtask 1.2     |         |      | 0:36 |      |   2.8 |
+      |                     | \_      Subtask 1.2.1 |         |      |      | 0:24 |   1.8 |
+      |                     | \_      Subtask 1.2.2 |         |      |      | 0:12 |   0.9 |
+      |                     | \_  Task 2            |         | 0:56 |      |      |   4.3 |
+      |                     | \_    Subtask 2.1     |         |      | 0:30 |      |   2.3 |
+      |                     | \_    Subtask 2.2     |         |      | 0:26 |      |   2.0 |
+      |                     | Project 3             |    3:53 |      |      |      |  17.8 |
+      |                     | \_  Task 1            |         | 1:13 |      |      |   5.6 |
+      |                     | \_    Subtask 1.1     |         |      | 0:08 |      |   0.6 |
+      |                     | \_    Subtask 1.2     |         |      | 0:20 |      |   1.5 |
+      |                     | \_    Subtask 1.3     |         |      | 0:45 |      |   3.4 |
+      |                     | \_  Task 2            |         | 0:02 |      |      |   0.2 |
+      |                     | \_  Task 3            |         | 0:08 |      |      |   0.6 |
+      |                     | \_    Subtask 3.1     |         |      | 0:03 |      |   0.2 |
+      |                     | \_    Subtask 3.2     |         |      | 0:05 |      |   0.4 |
+      |                     | \_  Task 4            |         | 2:30 |      |      |  11.5 |
+      |                     | \_    Subtask 4.1     |         |      | 0:12 |      |   0.9 |
+      |                     | \_    Subtask 4.2     |         |      | 1:21 |      |   6.2 |
+      |                     | \_    Subtask 4.3     |         |      | 0:14 |      |   1.1 |
+      |                     | \_    Subtask 4.4     |         |      | 0:43 |      |   3.3 |
+      ,#+END:
+    #+END_SRC
+
+*** Sort on time
+
+    #+BEGIN_SRC org
+      ,#+BEGIN: clocktable :scope agenda :compact nil :formula % :maxlevel 4 :sort-trees TIME :formatter lt/org-clocktable-write-sorted-trees
+      ,#+CAPTION: Clock summary at [2019-04-07 Sun 21:46]
+      | File                | Headline              |    Time |      |      |      |     % |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      |                     | ALL *Total time*      | *21:46* |      |      |      | 100.0 |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      | sample-work.org     | *File time*           | *13:28* |      |      |      |       |
+      |                     | Project 1             |    7:51 |      |      |      |  36.1 |
+      |                     | \_  Task 1            |         | 7:51 |      |      |  36.1 |
+      |                     | \_    Subtask 1.3     |         |      | 2:58 |      |  13.6 |
+      |                     | \_    Subtask 1.1     |         |      | 2:47 |      |  12.8 |
+      |                     | \_    Subtask 1.2     |         |      | 2:06 |      |   9.6 |
+      |                     | Project 3             |    3:53 |      |      |      |  17.8 |
+      |                     | \_  Task 4            |         | 2:30 |      |      |  11.5 |
+      |                     | \_    Subtask 4.2     |         |      | 1:21 |      |   6.2 |
+      |                     | \_    Subtask 4.4     |         |      | 0:43 |      |   3.3 |
+      |                     | \_    Subtask 4.3     |         |      | 0:14 |      |   1.1 |
+      |                     | \_    Subtask 4.1     |         |      | 0:12 |      |   0.9 |
+      |                     | \_  Task 1            |         | 1:13 |      |      |   5.6 |
+      |                     | \_    Subtask 1.3     |         |      | 0:45 |      |   3.4 |
+      |                     | \_    Subtask 1.2     |         |      | 0:20 |      |   1.5 |
+      |                     | \_    Subtask 1.1     |         |      | 0:08 |      |   0.6 |
+      |                     | \_  Task 3            |         | 0:08 |      |      |   0.6 |
+      |                     | \_    Subtask 3.2     |         |      | 0:05 |      |   0.4 |
+      |                     | \_    Subtask 3.1     |         |      | 0:03 |      |   0.2 |
+      |                     | \_  Task 2            |         | 0:02 |      |      |   0.2 |
+      |                     | Project 2             |    1:44 |      |      |      |   8.0 |
+      |                     | \_  Task 2            |         | 0:56 |      |      |   4.3 |
+      |                     | \_    Subtask 2.1     |         |      | 0:30 |      |   2.3 |
+      |                     | \_    Subtask 2.2     |         |      | 0:26 |      |   2.0 |
+      |                     | \_  Task 1            |         | 0:48 |      |      |   3.7 |
+      |                     | \_    Subtask 1.2     |         |      | 0:36 |      |   2.8 |
+      |                     | \_      Subtask 1.2.1 |         |      |      | 0:24 |   1.8 |
+      |                     | \_      Subtask 1.2.2 |         |      |      | 0:12 |   0.9 |
+      |                     | \_    Subtask 1.1     |         |      | 0:12 |      |   0.9 |
+      |---------------------+-----------------------+---------+------+------+------+-------|
+      | sample-personal.org | *File time*           |  *8:18* |      |      |      |       |
+      |                     | Category 3            |    6:16 |      |      |      |  28.8 |
+      |                     | \_  Task 2            |         | 6:10 |      |      |  28.3 |
+      |                     | \_    Subtask 2       |         |      | 2:26 |      |  11.2 |
+      |                     | \_    Subtask 1       |         |      | 2:17 |      |  10.5 |
+      |                     | \_      Subtask 1.1   |         |      |      | 0:42 |   3.2 |
+      |                     | \_      Subtask 1.2   |         |      |      | 0:18 |   1.4 |
+      |                     | \_    Subtask 4       |         |      | 1:02 |      |   4.7 |
+      |                     | \_    Subtask 3       |         |      | 0:25 |      |   1.9 |
+      |                     | \_  Task 1            |         | 0:06 |      |      |   0.5 |
+      |                     | Category 1            |    1:03 |      |      |      |   4.8 |
+      |                     | \_  Task 2            |         | 0:52 |      |      |   4.0 |
+      |                     | \_  Task 1            |         | 0:11 |      |      |   0.8 |
+      |                     | Category 2            |    0:59 |      |      |      |   4.5 |
+      |                     | \_  Task 1            |         | 0:59 |      |      |   4.5 |
+      ,#+END:
+    #+END_SRC
